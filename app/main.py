@@ -13,7 +13,7 @@ app = FastAPI(
 app = FastAPI(
     title=PROJECT_NAME,
     debug=DEBUG,
-    openapi_url=f{settings.APP_PREFIX}/openapi.json",
+    openapi_url=f"{settings.APP_PREFIX}/openapi.json",
     docs_url=f"{settings.APP_PREFIX}/docs",
 )
 

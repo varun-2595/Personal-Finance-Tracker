@@ -11,10 +11,10 @@ app = FastAPI(
 
 # Add prefixes to all routes
 app = FastAPI(
-    title=PROJECT_NAME,
-    debug=DEBUG,
-    openapi_url=f"{settings.APP_PREFIX}/openapi.json",
-    docs_url=f"{settings.APP_PREFIX}/docs",
+    title=settings.PROJECT_NAME,
+    debug=settings.DEBUG,
+    openapi_url=f"{settings.API_PREFIX}/openapi.json",
+    docs_url=f"{settings.API_PREFIX}/docs",
 )
 
 # Root endpoint

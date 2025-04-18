@@ -1,6 +1,5 @@
-from pydantic import BaseSettings
+from pydantic_settings import BaseSettings, SettingsConfigDict
 from functools import lru_cache
-import os
 from typing import Optional
 
 
@@ -15,13 +14,15 @@ class Settings(BaseSettings):
     
     # Application
     DEBUG: bool
-    APP_PREFIX: str
+    API_PREFIX: str
     PROJECT_NAME: str
     
-    class Config:
-        env_file = "dev.env"
-        
+    model_config = SettingsConfigDict(
+        env_file="dev.env",
+        case_sensitive=True,
+    )
+
 
 @lru_cache()
-def get_settings() -> Settings:
+def get_settings():
     return Settings()

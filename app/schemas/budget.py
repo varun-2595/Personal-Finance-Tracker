@@ -3,16 +3,18 @@ from datetime import datetime
 from typing import Optional
 
 
-class CategoryBase(BaseModel):
-    name: str
-    type: str
-    color: Optional[str] = None
+class BudgetBase(BaseModel):
+    amount: float
+    start_date: datetime
+    end_date: datetime
+    category_id: int
     
 
-class CategoryCreate(CategoryBase):
+class BudgetCreate(BudgetBase):
     pass
 
-class Category(CategoryBase):
+
+class Budget(BudgetBase):
     id: int
     user_id: int
     created_at: datetime

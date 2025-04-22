@@ -1,5 +1,7 @@
 from fastapi import FastAPI
+from app.api import auth
 from app.core.config import get_settings
+from app.api import auth, transactions, categories
 
 settings = get_settings()
 
@@ -21,3 +23,9 @@ app = FastAPI(
 @app.get("/")
 def root():
     return {"message": "Welcome to the Personal Finance Tracker Application!"}
+
+app.include_router(auth.router, prefix=f"{settings.API_PREFIX}/auth", tags=["Authentication"])
+
+app.include_router(transactions.router, prefix=f"{settings.API_PREFIX}/transactions", tags=["Transactions"])
+
+app.include_router(categories.router, prefix=f"{settings.API_PREFIX}/categories", tags=["Categories"])

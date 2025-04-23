@@ -70,6 +70,8 @@ class Budget(Base, TimeStampMixin):
     category_id = Column(Integer, ForeignKey("categories.id"), nullable=False)
     user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
     period = Column(String, nullable=False)
+    created_at = Column(DateTime, default=func.now(), nullable=False)
+    updated_at = Column(DateTime, default=func.now(), onupdate=func.now(), nullable=False)
     
     # Constraints
     __table_args__ = (

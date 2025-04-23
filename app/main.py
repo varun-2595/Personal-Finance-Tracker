@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from app.api import auth
 from app.core.config import get_settings
-from app.api import auth, transactions, categories
+from app.api import auth, transactions, categories, budgets
 
 settings = get_settings()
 
@@ -29,3 +29,5 @@ app.include_router(auth.router, prefix=f"{settings.API_PREFIX}/auth", tags=["Aut
 app.include_router(transactions.router, prefix=f"{settings.API_PREFIX}/transactions", tags=["Transactions"])
 
 app.include_router(categories.router, prefix=f"{settings.API_PREFIX}/categories", tags=["Categories"])
+
+app.include_router(budgets.router, prefix=f"{settings.API_PREFIX}/budgets", tags=["Budgets"])
